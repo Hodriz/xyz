@@ -4,7 +4,9 @@ import com.example.xyz.dto.VeiculoRequest;
 import com.example.xyz.dto.VeiculoResponse;
 import com.example.xyz.entity.Veiculo;
 import com.example.xyz.repository.VeiculoRepository;
+import org.springframework.stereotype.Service;
 
+@Service
 public class VeiculoService {
 
     private final VeiculoRepository repository;

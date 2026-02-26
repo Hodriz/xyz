@@ -1,10 +1,22 @@
 package com.example.xyz.entity;
 
+import jakarta.persistence.*;
+
+
+@Entity
+@Table(name="veiculo")
 public class Veiculo {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String modelo;
     private String marca;
+
+    @Enumerated(EnumType.STRING)
     private Funcao funcao;
+
     private int lugares;
     private int ano;
 

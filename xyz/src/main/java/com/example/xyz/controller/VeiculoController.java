@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+@RestController
+@RequestMapping("/veiculos")
 public class VeiculoController {
 
     private final VeiculoService service;
@@ -17,7 +19,6 @@ public class VeiculoController {
         this.service = service;
     }
 
-    @RequestMapping("/autos")
     @PostMapping
     public ResponseEntity<VeiculoResponse> criar(@RequestBody VeiculoRequest request){
         return ResponseEntity.ok(service.createVeiculo(request));
