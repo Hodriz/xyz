@@ -3,8 +3,15 @@ package com.example.xyz.service;
 import com.example.xyz.dto.VeiculoRequest;
 import com.example.xyz.dto.VeiculoResponse;
 import com.example.xyz.entity.Veiculo;
+import com.example.xyz.repository.VeiculoRepository;
 
 public class VeiculoService {
+
+    private final VeiculoRepository repository;
+
+    public VeiculoService(VeiculoRepository repository) {
+        this.repository = repository;
+    }
 
     public Veiculo toEntity(VeiculoRequest req){
         Veiculo veiculo=new Veiculo();
@@ -23,5 +30,11 @@ public class VeiculoService {
                 v.getFuncao(),
                 v.getAno()
         );
+    }
+
+    public VeiculoResponse createVeiculo(VeiculoRequest req){
+        Veiculo veiculo=toEntity(req);
+        Veiculo salvo=repository.save(veiculo);
+        return toResponse(salvo);
     }
 }
