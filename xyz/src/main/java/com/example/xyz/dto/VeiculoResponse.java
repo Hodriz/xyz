@@ -9,12 +9,12 @@ public class VeiculoResponse {
     private String modelo;
     private String marca;
     private Funcao funcao;
-    private int ano;
+    private Integer ano;
 
     public VeiculoResponse() {
     }
 
-    public VeiculoResponse(String modelo, String marca, Funcao funcao, int ano) {
+    public VeiculoResponse(String modelo, String marca, Funcao funcao, Integer ano) {
         this.modelo = modelo;
         this.marca = marca;
         this.funcao = funcao;
@@ -33,7 +33,7 @@ public class VeiculoResponse {
         return funcao;
     }
 
-    public int getAno() {
+    public Integer getAno() {
         return ano;
     }
 }

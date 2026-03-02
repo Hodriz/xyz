@@ -35,8 +35,9 @@ public class VeiculoController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<VeiculoResponse>delete(@PathVariable Long id){
-        return  ResponseEntity.notFound().build();
+    public ResponseEntity<Void>delete(@PathVariable Long id){
+        service.deleteVeiculo(id);
+        return ResponseEntity.noContent().build();
     }
 
     @GetMapping("/{id}")

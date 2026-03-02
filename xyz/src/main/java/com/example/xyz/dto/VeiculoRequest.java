@@ -7,10 +7,10 @@ public class VeiculoRequest {
     private String modelo;
     private String marca;
     private Funcao funcao;
-    private int lugares;
-    private int ano;
+    private Integer lugares;
+    private Integer ano;
 
-    public VeiculoRequest(String modelo, String marca, Funcao funcao, int ano, int lugares) {
+    public VeiculoRequest(String modelo, String marca, Funcao funcao, Integer ano, Integer lugares) {
         this.modelo = modelo;
         this.marca = marca;
         this.funcao = funcao;
@@ -35,7 +35,7 @@ public class VeiculoRequest {
         this.funcao = funcao;
     }
 
-    public void setAno(int ano) {
+    public void setAno(Integer ano) {
         this.ano = ano;
     }
 
@@ -51,15 +51,15 @@ public class VeiculoRequest {
         return funcao;
     }
 
-    public int getAno() {
+    public Integer getAno() {
         return ano;
     }
 
-    public int getLugares() {
+    public Integer getLugares() {
         return lugares;
     }
 
-    public void setLugares(int lugares) {
+    public void setLugares(Integer lugares) {
         this.lugares = lugares;
     }
 }
