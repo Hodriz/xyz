@@ -2,12 +2,12 @@ package com.example.xyz.controller;
 
 import com.example.xyz.dto.VeiculoRequest;
 import com.example.xyz.dto.VeiculoResponse;
+import com.example.xyz.entity.Veiculo;
 import com.example.xyz.service.VeiculoService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/veiculos")
@@ -23,5 +23,27 @@ public class VeiculoController {
     public ResponseEntity<VeiculoResponse> criar(@RequestBody VeiculoRequest request){
         return ResponseEntity.ok(service.createVeiculo(request));
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<VeiculoResponse>update(@PathVariable Long id, @RequestBody VeiculoRequest req){
+        return  ResponseEntity.ok(service.updateVeiculo(id, req));
+    }
+
+    @GetMapping
+    public List<VeiculoResponse> readAll() {
+        return service.readAllVeiculo();
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<VeiculoResponse>delete(@PathVariable Long id){
+        return  ResponseEntity.notFound().build();
+    }
+
+    @GetMapping("/{id}")
+    public  ResponseEntity<VeiculoResponse>read(@PathVariable Long id){
+        return ResponseEntity.ok(service.readVeiculo(id));
+    }
+
+
 
 }
