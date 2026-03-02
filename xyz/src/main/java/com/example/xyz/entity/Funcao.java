@@ -4,5 +4,6 @@ public enum Funcao {
     PASSEIO,
     TRANSPORTE,
     ESPORTIVO,
-    UTILITARIO
+    UTILITARIO,
+    EXECUTIVO
 }
