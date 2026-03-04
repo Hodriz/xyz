@@ -35,7 +35,7 @@ class VeiculoControllerTest {
 
         given(veiculoService.createVeiculo(any()))
                 .willReturn(new VeiculoResponse(
-                        "Uno","Fiat", Funcao.PASSEIO,2009
+                        1l,"Uno","Fiat", Funcao.PASSEIO,2009
                 ));
 
         mockMvc.perform(post("/veiculos")
@@ -56,7 +56,7 @@ class VeiculoControllerTest {
     void update() throws Exception{
 
         VeiculoResponse response =
-                new VeiculoResponse("Civic","Honda",Funcao.PASSEIO,2022);
+                new VeiculoResponse(1l,"Civic","Honda",Funcao.PASSEIO,2022);
 
         given(veiculoService.updateVeiculo(eq(1L), any()))
                 .willReturn(response);
@@ -81,7 +81,7 @@ class VeiculoControllerTest {
     @Test
     void readAll() throws Exception{
 
-        VeiculoResponse v=new VeiculoResponse(
+        VeiculoResponse v=new VeiculoResponse(1L,
                 "Corolla","Toyota",Funcao.EXECUTIVO,2023);
 
         given(veiculoService.readAllVeiculo())
@@ -107,7 +107,7 @@ class VeiculoControllerTest {
     @Test
     void read() throws Exception{
 
-        VeiculoResponse resp = new VeiculoResponse(
+        VeiculoResponse resp = new VeiculoResponse(1L,
                 "Civic", "Honda", Funcao.PASSEIO, 2022);
 
         given(veiculoService.readVeiculo(1L)).willReturn(resp);

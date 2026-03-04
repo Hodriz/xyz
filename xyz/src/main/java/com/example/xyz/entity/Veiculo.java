@@ -20,8 +20,7 @@ public class Veiculo {
     private int lugares;
     private int ano;
 
-    public Veiculo(Long id, String modelo, String marca, Funcao funcao, int lugares, int ano) {
-        this.id = id;
+    public Veiculo(String modelo, String marca, Funcao funcao, int lugares, int ano) {
         this.modelo = modelo;
         this.marca = marca;
         this.funcao = funcao;

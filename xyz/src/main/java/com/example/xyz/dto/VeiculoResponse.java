@@ -5,21 +5,24 @@ import com.example.xyz.entity.Veiculo;
 
 public class VeiculoResponse {
 
-
     private String modelo;
     private String marca;
     private Funcao funcao;
     private Integer ano;
+    private Long id;
 
     public VeiculoResponse() {
     }
 
-    public VeiculoResponse(String modelo, String marca, Funcao funcao, Integer ano) {
+    public VeiculoResponse(Long id,String modelo, String marca, Funcao funcao, Integer ano) {
+        this.id =id;
         this.modelo = modelo;
         this.marca = marca;
         this.funcao = funcao;
         this.ano = ano;
     }
+
+    public Long getId() { return id;}
 
     public String getModelo() {
         return modelo;

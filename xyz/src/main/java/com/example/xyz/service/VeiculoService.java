@@ -31,6 +31,7 @@ public class VeiculoService {
 
     public VeiculoResponse toResponse(Veiculo v){
         return new VeiculoResponse(
+                v.getId(),
                 v.getModelo(),
                 v.getMarca(),
                 v.getFuncao(),
@@ -64,6 +65,7 @@ public class VeiculoService {
 
         Veiculo veiculoFound=repository.findById(id).orElseThrow(
                 ()->new RuntimeException("Veiculo não encontrado"));
+        veiculoFound.getId();
         veiculoFound.getModelo();
         veiculoFound.getFuncao();
         veiculoFound.getMarca();
