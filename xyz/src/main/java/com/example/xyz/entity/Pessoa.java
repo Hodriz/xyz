@@ -1,7 +1,14 @@
 package com.example.xyz.entity;
 
+import jakarta.persistence.*;
+import org.hibernate.annotations.IdGeneratorType;
+
+@Entity
+@Table(name="pessoa")
 public class Pessoa {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private String cpf;
@@ -12,6 +19,9 @@ public class Pessoa {
         this.name = name;
         this.cpf = cpf;
         this.age = age;
+    }
+
+    public Pessoa() {
     }
 
     public Pessoa(String name, String cpf, Integer age) {
