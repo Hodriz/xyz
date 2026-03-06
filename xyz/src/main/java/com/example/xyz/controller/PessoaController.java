@@ -22,17 +22,17 @@ public class PessoaController {
         return ResponseEntity.ok(pessoaService.createPessoa(request));
     }
 
-    @GetMapping("{/id}")
+    @GetMapping("/{id}")
     public  ResponseEntity<PessoaResponse> read(@PathVariable Long id){
         return  ResponseEntity.ok(pessoaService.readPessoa(id));
     }
 
-    @PutMapping("{/id}")
+    @PutMapping("/{id}")
     public ResponseEntity<PessoaResponse>update(@PathVariable Long id, @RequestBody PessoaRequest request){
         return ResponseEntity.ok(pessoaService.updatePessoa(id, request));
     }
 
-    @DeleteMapping("{/id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void>delete(@PathVariable Long id){
         pessoaService.delete(id);
         return ResponseEntity.noContent().build();

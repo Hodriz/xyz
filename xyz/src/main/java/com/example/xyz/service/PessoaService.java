@@ -42,10 +42,6 @@ public class PessoaService {
 
     public PessoaResponse readPessoa(Long id){
         Pessoa pessoaFound=pessoaRepository.findById(id).orElseThrow(()->new RuntimeException("Pessoa não encontrada!"));
-        pessoaFound.getId();
-        pessoaFound.getAge();
-        pessoaFound.getName();
-        pessoaFound.getCpf();
         return toResponse(pessoaFound);
     }
 

@@ -25,6 +25,9 @@ public class Pessoa {
     }
 
     public Pessoa(String name, String cpf, Integer age) {
+        this.name = name;
+        this.cpf = cpf;
+        this.age = age;
     }
 
     public Long getId() {

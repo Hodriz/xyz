@@ -20,7 +20,7 @@ public class VeiculoController {
     }
 
     @PostMapping
-    public ResponseEntity<VeiculoResponse> criar(@RequestBody VeiculoRequest request){
+    public ResponseEntity<VeiculoResponse> criate(@RequestBody VeiculoRequest request){
         return ResponseEntity.ok(service.createVeiculo(request));
     }
 
