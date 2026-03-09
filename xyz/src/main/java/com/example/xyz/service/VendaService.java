@@ -2,7 +2,11 @@ package com.example.xyz.service;
 
 import com.example.xyz.dto.VendaRequest;
 import com.example.xyz.dto.VendaResponse;
+import com.example.xyz.entity.Pessoa;
+import com.example.xyz.entity.Veiculo;
 import com.example.xyz.entity.Venda;
+import com.example.xyz.repository.PessoaRepository;
+import com.example.xyz.repository.VeiculoRepository;
 import com.example.xyz.repository.VendaRepository;
 import org.springframework.stereotype.Service;
 
@@ -16,28 +20,40 @@ import java.util.List;
 public class VendaService {
 
     private final VendaRepository vendaRepository;
+    private final PessoaRepository pessoaRepository;
+    private final VeiculoRepository veiculoRepository;
 
-    public VendaService(VendaRepository vendaRepository) {
+    public VendaService(VendaRepository vendaRepository, PessoaRepository pessoaRepository, VeiculoRepository veiculoRepository) {
         this.vendaRepository = vendaRepository;
+        this.pessoaRepository = pessoaRepository;
+        this.veiculoRepository = veiculoRepository;
     }
 
     public Venda toEntity(VendaRequest vendaRequest) {
+        Pessoa pessoa = pessoaRepository
+                .findById(vendaRequest.getIdPessoa())
+                .orElseThrow(() -> new RuntimeException("Pessoa não encontrada"));
+
+        Veiculo veiculo = veiculoRepository
+                .findById(vendaRequest.getIdVeiculo())
+                .orElseThrow(() -> new RuntimeException("Veículo não encontrado"));
+
         Venda venda = new Venda(
                 null,
-                vendaRequest.getPessoa(),
-                vendaRequest.getVeiculo(),
-                LocalDateTime.now(),  // date
+                pessoa,
+                veiculo,
+                LocalDateTime.now(),
                 vendaRequest.getValor()
         );
 
-          return venda;
+        return venda;
       }
 
       public VendaResponse toRespose(Venda venda){
             return new VendaResponse(
-                    venda.getPessoa(),
-                    venda.getVeiculo(),
-                    null,
+                    venda.getPessoa().getId(),
+                    venda.getVeiculo().getId(),
+                    venda.getDate(),
                     venda.getValor()
             );
       }
@@ -63,13 +79,22 @@ public class VendaService {
       }
 
       public VendaResponse updateVenda(Long id, VendaRequest vendaRequest){
-        Venda vendaFound=vendaRepository.findById(id).orElseThrow(()->new RuntimeException("Venda não encontrada!"));
-        vendaFound.setVeiculo(vendaRequest.getVeiculo());
-        vendaFound.setPessoa(vendaRequest.getPessoa());
-        vendaFound.setValor(vendaRequest.getValor());
+          Venda vendaFound = vendaRepository.findById(id)
+                  .orElseThrow(() -> new RuntimeException("Venda não encontrada!"));
 
-        Venda vendaUpdated=vendaRepository.save(vendaFound);
-        return toRespose(vendaUpdated);
+          Pessoa pessoa = pessoaRepository.findById(vendaRequest.getIdPessoa())
+                  .orElseThrow(() -> new RuntimeException("Pessoa não encontrada!"));
+
+          Veiculo veiculo = veiculoRepository.findById(vendaRequest.getIdVeiculo())
+                  .orElseThrow(() -> new RuntimeException("Veículo não encontrado!"));
+
+          vendaFound.setPessoa(pessoa);
+          vendaFound.setVeiculo(veiculo);
+          vendaFound.setValor(vendaRequest.getValor());
+
+          Venda vendaUpdated = vendaRepository.save(vendaFound);
+
+          return toRespose(vendaUpdated);
       }
 
       public void deleteVenda(Long id){

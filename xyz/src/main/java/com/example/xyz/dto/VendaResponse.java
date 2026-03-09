@@ -1,34 +1,41 @@
 package com.example.xyz.dto;
 
-import com.example.xyz.entity.Pessoa;
-import com.example.xyz.entity.Veiculo;
-
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 public class VendaResponse {
 
-    private Pessoa pessoa;
-    private Veiculo veiculo;
-    private Date date;
+    private Long IdPessoa;
+    private Long IdVeiculo;
+    private LocalDateTime date;
     private BigDecimal valor;
 
-    public VendaResponse(Pessoa pessoa, Veiculo veiculo, Date date, BigDecimal valor) {
-        this.pessoa = pessoa;
-        this.veiculo = veiculo;
+
+    public VendaResponse(Long idPessoa, Long idVeiculo, LocalDateTime date, BigDecimal valor) {
+        IdPessoa = idPessoa;
+        IdVeiculo = idVeiculo;
         this.date = date;
         this.valor = valor;
     }
 
-    public Pessoa getPessoa() {
-        return pessoa;
+    public Long getIdPessoa() {
+        return IdPessoa;
     }
 
-    public Veiculo getVeiculo() {
-        return veiculo;
+    public void setIdPessoa(Long idPessoa) {
+        IdPessoa = idPessoa;
     }
 
-    public Date getDate() {
+    public Long getIdVeiculo() {
+        return IdVeiculo;
+    }
+
+    public void setIdVeiculo(Long idVeiculo) {
+        IdVeiculo = idVeiculo;
+    }
+
+    public LocalDateTime getDate() {
         return date;
     }
 

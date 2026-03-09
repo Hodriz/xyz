@@ -19,7 +19,7 @@ public class Venda {
     @JoinColumn(name = "pessoa_id")
     private Pessoa pessoa;
     @OneToOne
-    @JoinColumn(name ="veiculo_id")
+    @JoinColumn(name = "veiculo_id")
     private Veiculo veiculo;
     @DateTimeFormat
     private LocalDateTime date;

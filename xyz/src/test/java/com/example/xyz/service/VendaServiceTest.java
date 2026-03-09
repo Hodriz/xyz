@@ -64,8 +64,8 @@ class VendaServiceTest {
 
 
         vendaRequest = new VendaRequest(
-                pessoa,
-                veiculo,
+                pessoa.getId(),
+                veiculo.getId(),
                 LocalDateTime.now(),
                 new BigDecimal("23500.23")
         );

@@ -8,32 +8,32 @@ import java.time.LocalDateTime;
 
 public class VendaRequest {
 
-    private Pessoa pessoa;
-    private Veiculo veiculo;
+    private Long idPessoa;
+    private Long idVeiculo;
     private LocalDateTime date;
     private BigDecimal valor;
 
-    public VendaRequest(Pessoa pessoa, Veiculo veiculo, LocalDateTime date, BigDecimal valor) {
-        this.pessoa = pessoa;
-        this.veiculo = veiculo;
+    public VendaRequest(Long idPessoa, Long idVeiculo, LocalDateTime date, BigDecimal valor) {
+        this.idPessoa = idPessoa;
+        this.idVeiculo = idVeiculo;
         this.date = date;
         this.valor = valor;
     }
 
-    public Pessoa getPessoa() {
-        return pessoa;
+    public Long getIdPessoa() {
+        return idPessoa;
     }
 
-    public void setPessoa(Pessoa pessoa) {
-        this.pessoa = pessoa;
+    public void setIdPessoa(Long idPessoa) {
+        this.idPessoa = idPessoa;
     }
 
-    public Veiculo getVeiculo() {
-        return veiculo;
+    public Long getIdVeiculo() {
+        return idVeiculo;
     }
 
-    public void setVeiculo(Veiculo veiculo) {
-        this.veiculo = veiculo;
+    public void setIdVeiculo(Long idVeiculo) {
+        this.idVeiculo = idVeiculo;
     }
 
     public LocalDateTime getDate() {
